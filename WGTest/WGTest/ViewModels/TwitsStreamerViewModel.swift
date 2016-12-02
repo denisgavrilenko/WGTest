@@ -11,12 +11,12 @@ import ReactiveSwift
 
 class TwitsStreamerViewModel {
     
-    public var twits: Property<[TwitViewModel]> {
+    public var twits: Property<TwitViewModel?> {
         return Property(_twits)
     }
     
     private let twitsStreamer: TwitsStreamer
-    private let _twits = MutableProperty<[TwitViewModel]>([])
+    private let _twits = MutableProperty<TwitViewModel?>(nil)
     
     init(twitsStreamer: TwitsStreamer) {
         self.twitsStreamer = twitsStreamer
@@ -26,7 +26,7 @@ class TwitsStreamerViewModel {
         twitsStreamer.startStream()
         .map { TwitViewModel(twit: $0) }
         .on(value: { twit in
-            self._twits.value.append(twit)
+            self._twits.value = twit
         })
         .start()
     }

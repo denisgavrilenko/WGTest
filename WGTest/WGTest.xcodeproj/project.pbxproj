@@ -34,6 +34,9 @@
 		4FF4BF3D1DF1CA81005325AD /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF4BF3B1DF1CA81005325AD /* Swinject.framework */; };
 		4FF4BF3E1DF1CA81005325AD /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF4BF3C1DF1CA81005325AD /* SwinjectStoryboard.framework */; };
 		4FF4BF411DF1CB49005325AD /* SwinjectStoryboard+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF4BF401DF1CB49005325AD /* SwinjectStoryboard+Setup.swift */; };
+		4FF4BF441DF1D1EC005325AD /* TwitsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF4BF431DF1D1EC005325AD /* TwitsTableViewDataSource.swift */; };
+		4FF4BF471DF1D2C6005325AD /* TwitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF4BF451DF1D2C6005325AD /* TwitTableViewCell.swift */; };
+		4FF4BF481DF1D2C6005325AD /* TwitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF4BF461DF1D2C6005325AD /* TwitTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,9 @@
 		4FF4BF3B1DF1CA81005325AD /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = ../Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		4FF4BF3C1DF1CA81005325AD /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = ../Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		4FF4BF401DF1CB49005325AD /* SwinjectStoryboard+Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+Setup.swift"; sourceTree = "<group>"; };
+		4FF4BF431DF1D1EC005325AD /* TwitsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitsTableViewDataSource.swift; sourceTree = "<group>"; };
+		4FF4BF451DF1D2C6005325AD /* TwitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitTableViewCell.swift; sourceTree = "<group>"; };
+		4FF4BF461DF1D2C6005325AD /* TwitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +129,10 @@
 		4F8CEF5F1DF19A4100225D2C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4FF4BF421DF1D1DA005325AD /* TableViewDataSource */,
 				4F52781A1DF1C986000E69CB /* TwitsStreamerViewController.swift */,
+				4FF4BF451DF1D2C6005325AD /* TwitTableViewCell.swift */,
+				4FF4BF461DF1D2C6005325AD /* TwitTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +240,14 @@
 				4FF4BF401DF1CB49005325AD /* SwinjectStoryboard+Setup.swift */,
 			);
 			path = Assemblies;
+			sourceTree = "<group>";
+		};
+		4FF4BF421DF1D1DA005325AD /* TableViewDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				4FF4BF431DF1D1EC005325AD /* TwitsTableViewDataSource.swift */,
+			);
+			path = TableViewDataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F9D73341DF04272005D6C9E /* LaunchScreen.storyboard in Resources */,
+				4FF4BF481DF1D2C6005325AD /* TwitTableViewCell.xib in Resources */,
 				4F9D73311DF04272005D6C9E /* Assets.xcassets in Resources */,
 				4F9D732F1DF04272005D6C9E /* Main.storyboard in Resources */,
 			);
@@ -400,8 +418,10 @@
 				4F9D732A1DF04272005D6C9E /* AppDelegate.swift in Sources */,
 				4F52780F1DF1BEFE000E69CB /* Twit.swift in Sources */,
 				4FF4BF411DF1CB49005325AD /* SwinjectStoryboard+Setup.swift in Sources */,
+				4FF4BF441DF1D1EC005325AD /* TwitsTableViewDataSource.swift in Sources */,
 				4F8CEF661DF19AF200225D2C /* TwitterStreamService.swift in Sources */,
 				4F5278171DF1C58F000E69CB /* TwitsStreamerViewModel.swift in Sources */,
+				4FF4BF471DF1D2C6005325AD /* TwitTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
