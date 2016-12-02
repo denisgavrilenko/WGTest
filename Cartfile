@@ -1,0 +1,9 @@
+github "Alamofire/Alamofire" ~> 4.0
+github "OAuthSwift/OAuthSwift" ~> 1.1.0
+github "SwiftyJSON/SwiftyJSON"
+github "ReactiveCocoa/ReactiveSwift" 
+github "ReactiveCocoa/ReactiveCocoa" "5.0.0-alpha.3"
+# Dependency Injection Container
+github "Swinject/Swinject" "2.0.0-beta.2"
+# Use SwinjectStoryboard
+github "Swinject/SwinjectStoryboard" "1.0.0-beta.2"
