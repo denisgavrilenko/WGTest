@@ -13,13 +13,15 @@ import SwiftyJSON
 
 class TwitterStreamService {
     private let url: URL
+    private let credentials: OAuthSwiftCredential
     private var streamRequest: Request?
     
-    init(url: URL) {
+    init(url: URL, credentials: OAuthSwiftCredential) {
         self.url = url
+        self.credentials = credentials
     }
     
-    func startStream(withCredentials credentials: OAuthSwiftCredential, stream: ((JSON? ,Error? , String? ) -> ())? = nil) {
+    func startStream(stream: ((JSON? ,Error? , String? ) -> ())? = nil) {
         
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             stream?(nil, nil, nil)
@@ -44,7 +46,10 @@ class TwitterStreamService {
         streamRequest = Alamofire.request(url.absoluteString, method: .post, headers: headers)
             .stream { (data) in
                 let json = JSON(data: data)
+                guard json.null == nil else { return }
+                
                 print(json)
+
                 stream?(json, nil, nil)
             }
             .responseJSON { (response) in
