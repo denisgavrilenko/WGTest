@@ -7,8 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F5278061DF1ADC8000E69CB /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8CEF691DF19C7C00225D2C /* OAuthSwift.framework */; };
+		4F5278071DF1ADCA000E69CB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8CEF681DF19C7C00225D2C /* Alamofire.framework */; };
+		4F5278081DF1ADCC000E69CB /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8CEF6A1DF19C7C00225D2C /* SwiftyJSON.framework */; };
+		4F52780A1DF1AE8F000E69CB /* TwitterStreamServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5278091DF1AE8F000E69CB /* TwitterStreamServiceTests.swift */; };
+		4F52780B1DF1AECF000E69CB /* TwitterStreamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8CEF651DF19AF200225D2C /* TwitterStreamService.swift */; };
+		4F8CEF641DF19A7E00225D2C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8CEF631DF19A7E00225D2C /* MainViewController.swift */; };
+		4F8CEF661DF19AF200225D2C /* TwitterStreamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8CEF651DF19AF200225D2C /* TwitterStreamService.swift */; };
+		4F8CEF6B1DF19C7C00225D2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8CEF681DF19C7C00225D2C /* Alamofire.framework */; };
+		4F8CEF6C1DF19C7C00225D2C /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8CEF691DF19C7C00225D2C /* OAuthSwift.framework */; };
+		4F8CEF6D1DF19C7C00225D2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8CEF6A1DF19C7C00225D2C /* SwiftyJSON.framework */; };
 		4F9D732A1DF04272005D6C9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9D73291DF04272005D6C9E /* AppDelegate.swift */; };
-		4F9D732C1DF04272005D6C9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9D732B1DF04272005D6C9E /* ViewController.swift */; };
 		4F9D732F1DF04272005D6C9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D732D1DF04272005D6C9E /* Main.storyboard */; };
 		4F9D73311DF04272005D6C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D73301DF04272005D6C9E /* Assets.xcassets */; };
 		4F9D73341DF04272005D6C9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D73321DF04272005D6C9E /* LaunchScreen.storyboard */; };
@@ -34,9 +43,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F5278091DF1AE8F000E69CB /* TwitterStreamServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterStreamServiceTests.swift; sourceTree = "<group>"; };
+		4F8CEF631DF19A7E00225D2C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4F8CEF651DF19AF200225D2C /* TwitterStreamService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterStreamService.swift; sourceTree = "<group>"; };
+		4F8CEF681DF19C7C00225D2C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		4F8CEF691DF19C7C00225D2C /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = ../Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
+		4F8CEF6A1DF19C7C00225D2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		4F9D73261DF04272005D6C9E /* WGTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WGTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9D73291DF04272005D6C9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F9D732B1DF04272005D6C9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4F9D732E1DF04272005D6C9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F9D73301DF04272005D6C9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F9D73331DF04272005D6C9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8CEF6B1DF19C7C00225D2C /* Alamofire.framework in Frameworks */,
+				4F8CEF6C1DF19C7C00225D2C /* OAuthSwift.framework in Frameworks */,
+				4F8CEF6D1DF19C7C00225D2C /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +78,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5278061DF1ADC8000E69CB /* OAuthSwift.framework in Frameworks */,
+				4F5278071DF1ADCA000E69CB /* Alamofire.framework in Frameworks */,
+				4F5278081DF1ADCC000E69CB /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +94,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F8CEF5F1DF19A4100225D2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4F8CEF631DF19A7E00225D2C /* MainViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4F8CEF601DF19A4100225D2C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4F8CEF651DF19AF200225D2C /* TwitterStreamService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4F8CEF611DF19A4100225D2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4F8CEF621DF19A4100225D2C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4F8CEF671DF19C7C00225D2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F8CEF681DF19C7C00225D2C /* Alamofire.framework */,
+				4F8CEF691DF19C7C00225D2C /* OAuthSwift.framework */,
+				4F8CEF6A1DF19C7C00225D2C /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4F9D731D1DF04272005D6C9E = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +141,7 @@
 				4F9D733D1DF04272005D6C9E /* WGTestTests */,
 				4F9D73481DF04272005D6C9E /* WGTestUITests */,
 				4F9D73271DF04272005D6C9E /* Products */,
+				4F8CEF671DF19C7C00225D2C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,8 +158,11 @@
 		4F9D73281DF04272005D6C9E /* WGTest */ = {
 			isa = PBXGroup;
 			children = (
+				4F8CEF5F1DF19A4100225D2C /* Views */,
+				4F8CEF621DF19A4100225D2C /* ViewModels */,
+				4F8CEF611DF19A4100225D2C /* Models */,
+				4F8CEF601DF19A4100225D2C /* Services */,
 				4F9D73291DF04272005D6C9E /* AppDelegate.swift */,
-				4F9D732B1DF04272005D6C9E /* ViewController.swift */,
 				4F9D732D1DF04272005D6C9E /* Main.storyboard */,
 				4F9D73301DF04272005D6C9E /* Assets.xcassets */,
 				4F9D73321DF04272005D6C9E /* LaunchScreen.storyboard */,
@@ -112,6 +176,7 @@
 			children = (
 				4F9D733E1DF04272005D6C9E /* WGTestTests.swift */,
 				4F9D73401DF04272005D6C9E /* Info.plist */,
+				4F5278091DF1AE8F000E69CB /* TwitterStreamServiceTests.swift */,
 			);
 			path = WGTestTests;
 			sourceTree = "<group>";
@@ -135,6 +200,7 @@
 				4F9D73221DF04272005D6C9E /* Sources */,
 				4F9D73231DF04272005D6C9E /* Frameworks */,
 				4F9D73241DF04272005D6C9E /* Resources */,
+				4FCA00121DF19D7300518418 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -257,13 +323,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4FCA00121DF19D7300518418 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/OAuthSwift.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4F9D73221DF04272005D6C9E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F9D732C1DF04272005D6C9E /* ViewController.swift in Sources */,
 				4F9D732A1DF04272005D6C9E /* AppDelegate.swift in Sources */,
+				4F8CEF641DF19A7E00225D2C /* MainViewController.swift in Sources */,
+				4F8CEF661DF19AF200225D2C /* TwitterStreamService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +358,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F9D733F1DF04272005D6C9E /* WGTestTests.swift in Sources */,
+				4F52780A1DF1AE8F000E69CB /* TwitterStreamServiceTests.swift in Sources */,
+				4F52780B1DF1AECF000E69CB /* TwitterStreamService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FQAXAS293G;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
 				INFOPLIST_FILE = WGTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -430,6 +519,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FQAXAS293G;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
 				INFOPLIST_FILE = WGTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -445,6 +535,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = FQAXAS293G;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
 				INFOPLIST_FILE = WGTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octonion.WGTestTests;
@@ -460,6 +551,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = FQAXAS293G;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
 				INFOPLIST_FILE = WGTestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octonion.WGTestTests;
@@ -516,6 +608,7 @@
 				4F9D73501DF04272005D6C9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F9D73511DF04272005D6C9E /* Build configuration list for PBXNativeTarget "WGTestTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +617,7 @@
 				4F9D73531DF04272005D6C9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F9D73541DF04272005D6C9E /* Build configuration list for PBXNativeTarget "WGTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +626,7 @@
 				4F9D73561DF04272005D6C9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
