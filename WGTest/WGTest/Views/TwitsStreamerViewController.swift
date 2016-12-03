@@ -11,7 +11,7 @@ import ReactiveSwift
 
 class TwitsStreamerViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView?
     private static let identifier = "CommonCell"
     
     public var viewModel: TwitsStreamerViewModel? {
@@ -19,11 +19,21 @@ class TwitsStreamerViewController: UIViewController {
             if let viewModel = viewModel {
                 viewModel.twits.producer
                 .observe(on: UIScheduler())
-                .on(value: { twit in
-                    if let twit = twit {
-                        print(twit)
-                        self.dataSource.add(twit: twit)
-                        self.tableView.reloadData()
+                .on(value: { twits in
+                    print(twits)
+                    self.dataSource.update(twits: twits)
+                    if let tableView = self.tableView {
+                        tableView.reloadData()
+                    }
+                })
+                .start()
+                
+                viewModel.errorMessage.producer
+                .observe(on: UIScheduler())
+                .on(value: { message in
+                    if let message = message {
+                        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .`default`))
                     }
                 })
                 .start()
@@ -45,15 +55,21 @@ class TwitsStreamerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.viewModel?.startStream()
+        viewModel?.startStream()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        viewModel?.stopStream()
     }
     
 
     func customizeTableView() {
-        tableView.register(UINib(nibName: "TwitTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: TwitsStreamerViewController.identifier)
-        tableView.dataSource = dataSource
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
+        tableView?.register(UINib(nibName: "TwitTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: TwitsStreamerViewController.identifier)
+        tableView?.dataSource = dataSource
+        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView?.estimatedRowHeight = 100
     }
 
 }

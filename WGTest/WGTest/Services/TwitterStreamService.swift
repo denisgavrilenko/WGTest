@@ -11,6 +11,11 @@ import Alamofire
 import OAuthSwift
 import SwiftyJSON
 
+enum StreamServiceError {
+    case wrongURL
+    case streamResponse(description: String)
+}
+
 class TwitterStreamService {
     private let url: URL
     private let credentials: OAuthSwiftCredential
@@ -21,27 +26,21 @@ class TwitterStreamService {
         self.credentials = credentials
     }
     
-    func startStream(stream: ((JSON? ,Error? , String? ) -> ())? = nil) {
+    func startStream(stream: ((JSON?, StreamServiceError?) -> ())? = nil) {
         
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
-            stream?(nil, nil, nil)
+            stream?(nil, .wrongURL)
             return
         }
         
-        var parameters = [String: String]()
-        if let params = components.queryItems?.dictionary(transform: { [$0.name : $0.value!] }) {
-            parameters = params
-        }
-        
-        var componentsWithoutParams = components
-        componentsWithoutParams.queryItems = nil
-        
-        guard let urlWithoutParams = componentsWithoutParams.url else {
-            stream?(nil, nil, nil)
+        guard let urlWithoutParams = components.urlWithoutParameters() else {
+            stream?(nil, .wrongURL)
             return
         }
         
-        let headers = credentials.makeHeaders(urlWithoutParams, method: .POST, parameters: parameters)
+        let parameters = components.queryItems?.dictionary(transform: { [$0.name : $0.value!] })
+
+        let headers = credentials.makeHeaders(urlWithoutParams, method: .POST, parameters: parameters.maybe(other: [String: String]()))
         
         streamRequest = Alamofire.request(url.absoluteString, method: .post, headers: headers)
             .stream { (data) in
@@ -50,21 +49,27 @@ class TwitterStreamService {
                 
                 print(json)
 
-                stream?(json, nil, nil)
+                stream?(json, nil)
             }
             .responseJSON { (response) in
                 print(response)
-                switch response.result {
-                case .failure(let error):
-                    stream?(nil, error, response.result.description)
-                default: break
+                if response.response?.statusCode != 200 {
+                    switch response.result {
+                    case .failure(let error):
+                        stream?(nil, .streamResponse(description: error.localizedDescription))
+                    default: break
+                    }
+                }
+                else {
+                    // send finished
+                    stream?(nil, nil)
                 }
             }
 
     }
     
     func stopStream() {
-        
+        streamRequest?.cancel()
     }
 }
 
@@ -77,5 +82,13 @@ extension Collection {
             }
         }
         return dictionary
+    }
+}
+
+extension URLComponents {
+    public func urlWithoutParameters() -> URL? {
+        var componentsWithoutParams = self
+        componentsWithoutParams.queryItems = nil
+        return componentsWithoutParams.url
     }
 }

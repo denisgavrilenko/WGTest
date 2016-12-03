@@ -11,12 +11,14 @@ import ReactiveSwift
 
 class TwitsStreamerViewModel {
     
-    public var twits: Property<TwitViewModel?> {
-        return Property(_twits)
-    }
+    public var twits: Property<[TwitViewModel]> { return Property(_twits) }
+    public var errorMessage: Property<String?> { return Property(_errorMessage) }
+
     
     private let twitsStreamer: TwitsStreamer
-    private let _twits = MutableProperty<TwitViewModel?>(nil)
+    private let twitsMaxCount = 5
+    private let _twits = MutableProperty<[TwitViewModel]>([])
+    private let _errorMessage = MutableProperty<String?>(nil)
     
     init(twitsStreamer: TwitsStreamer) {
         self.twitsStreamer = twitsStreamer
@@ -26,8 +28,27 @@ class TwitsStreamerViewModel {
         twitsStreamer.startStream()
         .map { TwitViewModel(twit: $0) }
         .on(value: { twit in
-            self._twits.value = twit
+            self.appendNewTwit(twit: twit)
+            },
+            failed: { error in
+                switch error {
+                case .service(message: let message):
+                    self._errorMessage.value = message
+                }
+            },
+            interrupted: {
+                self.startStream()
         })
         .start()
+    }
+    
+    func stopStream() {
+        twitsStreamer.stopStream()
+    }
+    
+    private func appendNewTwit(twit: TwitViewModel) {
+        var twits = _twits.value
+        twits.insert(twit, at: 0)
+        _twits.value = Array(twits.prefix(twitsMaxCount))
     }
 }
