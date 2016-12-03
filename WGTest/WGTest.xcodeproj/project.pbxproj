@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0E1E651DF2EF420023C215 /* Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF4BF4A1DF2C5FD005325AD /* Maybe.swift */; };
 		4F5278061DF1ADC8000E69CB /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8CEF691DF19C7C00225D2C /* OAuthSwift.framework */; };
 		4F5278071DF1ADCA000E69CB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8CEF681DF19C7C00225D2C /* Alamofire.framework */; };
 		4F5278081DF1ADCC000E69CB /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8CEF6A1DF19C7C00225D2C /* SwiftyJSON.framework */; };
@@ -37,6 +38,7 @@
 		4FF4BF441DF1D1EC005325AD /* TwitsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF4BF431DF1D1EC005325AD /* TwitsTableViewDataSource.swift */; };
 		4FF4BF471DF1D2C6005325AD /* TwitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF4BF451DF1D2C6005325AD /* TwitTableViewCell.swift */; };
 		4FF4BF481DF1D2C6005325AD /* TwitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF4BF461DF1D2C6005325AD /* TwitTableViewCell.xib */; };
+		4FF4BF4B1DF2C5FD005325AD /* Maybe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF4BF4A1DF2C5FD005325AD /* Maybe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,7 @@
 		4FF4BF431DF1D1EC005325AD /* TwitsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitsTableViewDataSource.swift; sourceTree = "<group>"; };
 		4FF4BF451DF1D2C6005325AD /* TwitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitTableViewCell.swift; sourceTree = "<group>"; };
 		4FF4BF461DF1D2C6005325AD /* TwitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitTableViewCell.xib; sourceTree = "<group>"; };
+		4FF4BF4A1DF2C5FD005325AD /* Maybe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maybe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,7 @@
 		4F9D73281DF04272005D6C9E /* WGTest */ = {
 			isa = PBXGroup;
 			children = (
+				4FF4BF491DF2C5F2005325AD /* Functional */,
 				4FF4BF3F1DF1CB3A005325AD /* Assemblies */,
 				4F8CEF5F1DF19A4100225D2C /* Views */,
 				4F8CEF621DF19A4100225D2C /* ViewModels */,
@@ -248,6 +252,14 @@
 				4FF4BF431DF1D1EC005325AD /* TwitsTableViewDataSource.swift */,
 			);
 			path = TableViewDataSource;
+			sourceTree = "<group>";
+		};
+		4FF4BF491DF2C5F2005325AD /* Functional */ = {
+			isa = PBXGroup;
+			children = (
+				4FF4BF4A1DF2C5FD005325AD /* Maybe.swift */,
+			);
+			path = Functional;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +432,7 @@
 				4FF4BF411DF1CB49005325AD /* SwinjectStoryboard+Setup.swift in Sources */,
 				4FF4BF441DF1D1EC005325AD /* TwitsTableViewDataSource.swift in Sources */,
 				4F8CEF661DF19AF200225D2C /* TwitterStreamService.swift in Sources */,
+				4FF4BF4B1DF2C5FD005325AD /* Maybe.swift in Sources */,
 				4F5278171DF1C58F000E69CB /* TwitsStreamerViewModel.swift in Sources */,
 				4FF4BF471DF1D2C6005325AD /* TwitTableViewCell.swift in Sources */,
 			);
@@ -429,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0E1E651DF2EF420023C215 /* Maybe.swift in Sources */,
 				4F9D733F1DF04272005D6C9E /* WGTestTests.swift in Sources */,
 				4F52780A1DF1AE8F000E69CB /* TwitterStreamServiceTests.swift in Sources */,
 				4F52780B1DF1AECF000E69CB /* TwitterStreamService.swift in Sources */,
@@ -605,7 +619,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = FQAXAS293G;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
 				INFOPLIST_FILE = WGTestTests/Info.plist;
@@ -621,7 +634,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = FQAXAS293G;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../Carthage/Build/iOS\"";
 				INFOPLIST_FILE = WGTestTests/Info.plist;

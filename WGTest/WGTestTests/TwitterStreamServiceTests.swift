@@ -23,13 +23,38 @@ class TwitterStreamServiceTests: XCTestCase {
         service = TwitterStreamService(url: URL(string: "https://stream.twitter.com/1.1/statuses/filter.json?track=london")!, credentials: creds)
     }
     
-    func testTwitterStream() {
+    override func tearDown() {
+        super.tearDown()
+        
+        service?.stopStream()
+    }
+    
+    func testStartTwitterStream() {
         let asyncExpectation = expectation(description: "Stream")
         
-        service!.startStream { (json, error, errorString) in
+        service!.startStream { (json, error) in
             XCTAssertNil(error);
             XCTAssertNotNil(json)
             asyncExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10.0) { (error) in
+            XCTAssertNil(error, "Something went wrong")
+        }
+    }
+    
+    func testStopTwitterStream() {
+        
+        let asyncExpectation = expectation(description: "Cancel Stream Response")
+        
+        service!.startStream { (json, error) in
+//            XCTAssertNil(error);
+//            XCTAssertNotNil(json)
+//            asyncExpectation.fulfill()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { 
+            self.service!.stopStream()
         }
         
         waitForExpectations(timeout: 10.0) { (error) in
