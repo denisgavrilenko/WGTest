@@ -13,14 +13,8 @@ class TwitsTableViewDataSource: NSObject {
     fileprivate let identifier: String
     fileprivate let customization: (TwitTableViewCell, TwitViewModel) -> ()
     
-    func add(twit: TwitViewModel) {
-        items.insert(twit, at: 0)
-        
-        // fast code, remove from view layer
-        let excessСount = items.count - 5
-        if excessСount > 0 {
-            items.removeLast(excessСount)
-        }
+    func update(twits: [TwitViewModel]) {
+        items = twits
     }
     
     init(identifier: String, customization: @escaping (TwitTableViewCell, TwitViewModel) -> ()) {

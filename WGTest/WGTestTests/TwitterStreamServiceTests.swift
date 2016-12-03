@@ -27,6 +27,7 @@ class TwitterStreamServiceTests: XCTestCase {
         super.tearDown()
         
         service?.stopStream()
+        sleep(10)
     }
     
     func testStartTwitterStream() {
@@ -48,9 +49,9 @@ class TwitterStreamServiceTests: XCTestCase {
         let asyncExpectation = expectation(description: "Cancel Stream Response")
         
         service!.startStream { (json, error) in
-//            XCTAssertNil(error);
-//            XCTAssertNotNil(json)
-//            asyncExpectation.fulfill()
+            if json == nil && error == nil {
+                asyncExpectation.fulfill()
+            }
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { 

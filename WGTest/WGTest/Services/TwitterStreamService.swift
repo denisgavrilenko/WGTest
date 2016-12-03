@@ -26,7 +26,7 @@ class TwitterStreamService {
         self.credentials = credentials
     }
     
-    func startStream(stream: ((JSON?, StreamServiceError? ) -> ())? = nil) {
+    func startStream(stream: ((JSON?, StreamServiceError?) -> ())? = nil) {
         
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             stream?(nil, .wrongURL)
@@ -53,10 +53,16 @@ class TwitterStreamService {
             }
             .responseJSON { (response) in
                 print(response)
-                switch response.result {
-                case .failure(let error):
-                    stream?(nil, .streamResponse(description: error.localizedDescription))
-                default: break
+                if response.response?.statusCode != 200 {
+                    switch response.result {
+                    case .failure(let error):
+                        stream?(nil, .streamResponse(description: error.localizedDescription))
+                    default: break
+                    }
+                }
+                else {
+                    // send finished
+                    stream?(nil, nil)
                 }
             }
 

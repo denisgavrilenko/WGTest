@@ -31,6 +31,7 @@ struct TwitsStreamer {
             self.streamService.startStream(stream: { (json, error) in
                 if let error = error {
                     observer.send(error: TwitsStreamError.from(serviceError: error))
+                    observer.sendInterrupted()
                     return
                 }
                 guard let json = json else { return }
@@ -39,5 +40,9 @@ struct TwitsStreamer {
                 }
             })
         }
+    }
+    
+    func stopStream() {
+        streamService.stopStream()
     }
 }
