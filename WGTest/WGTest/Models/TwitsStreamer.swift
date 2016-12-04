@@ -35,8 +35,9 @@ struct TwitsStreamer {
                     return
                 }
                 guard let json = json else { return }
-                if let text = json["text"].string {
-                    observer.send(value: Twit(owner: "me", twit: text))
+                
+                if let twit = Twit(json: json) {
+                    observer.send(value: twit)
                 }
             })
         }
