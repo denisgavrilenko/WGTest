@@ -35,8 +35,6 @@ class TwitsStreamerViewModel {
                 case .service(message: let message):
                     self._errorMessage.value = message
                 }
-            },
-            interrupted: {
                 self.startStream()
         })
         .start()

@@ -53,19 +53,21 @@ class TwitterStreamService {
             }
             .responseJSON { (response) in
                 print(response)
-                if response.response?.statusCode != 200 {
-                    switch response.result {
-                    case .failure(let error):
-                        stream?(nil, .streamResponse(description: error.localizedDescription))
-                    default: break
+                
+                if let error = response.result.error as? NSError {
+                    guard error.code != -999 else {
+                        // send finished
+                        stream?(nil, nil)
+                        return
                     }
                 }
-                else {
-                    // send finished
-                    stream?(nil, nil)
+                
+                switch response.result {
+                case .failure(let error):
+                    stream?(nil, .streamResponse(description: error.localizedDescription))
+                default: break
                 }
             }
-
     }
     
     func stopStream() {

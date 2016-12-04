@@ -34,6 +34,7 @@ class TwitsStreamerViewController: UIViewController {
                     if let message = message {
                         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: .`default`))
+                        self.present(alert, animated: true)
                     }
                 })
                 .start()
