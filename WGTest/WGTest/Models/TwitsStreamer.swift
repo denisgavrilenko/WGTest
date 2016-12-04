@@ -10,24 +10,27 @@ import Foundation
 import ReactiveSwift
 import SwiftyJSON
 
-enum TwitsStreamError: Error {
-    
-}
-
-struct TwitsStreamer {
-    let streamService: TwitterStreamService
+struct TwitsStreamer: TwitsStreaming {
+    let streamService: StreamService
     
     func startStream() -> SignalProducer <Twit, TwitsStreamError> {
         return SignalProducer{ observer, disposable in
-            self.streamService.startStream(stream: { (json, error, errorString) in
-                guard let json = json else {
-                    // error
+            self.streamService.startStream(stream: { (json, error) in
+                if let error = error {
+                    observer.send(error: TwitsStreamError.from(serviceError: error))
+                    observer.sendCompleted()
                     return
                 }
-                if let text = json["text"].string {
-                    observer.send(value: Twit(owner: "me", twit: text))
+                guard let json = json else { return }
+                
+                if let twit = Twit(json: json) {
+                    observer.send(value: twit)
                 }
             })
         }
+    }
+    
+    func stopStream() {
+        streamService.stopStream()
     }
 }

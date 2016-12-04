@@ -7,3 +7,6 @@ github "ReactiveCocoa/ReactiveCocoa" "5.0.0-alpha.3"
 github "Swinject/Swinject" "2.0.0-beta.2"
 # Use SwinjectStoryboard
 github "Swinject/SwinjectStoryboard" "1.0.0-beta.2"
+# Tests
+github "Quick/Quick"
+github "Quick/Nimble"

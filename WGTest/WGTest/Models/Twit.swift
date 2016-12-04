@@ -7,8 +7,22 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Twit {
     let owner: String
     let twit: String
+    
+    init?(json: JSON) {
+        owner = ""
+        guard let twit = json["text"].string else {
+            return nil
+        }
+        self.twit = twit
+    }
+    
+    init(owner: String, twit: String) {
+        self.owner = owner
+        self.twit = twit
+    }
 }
