@@ -11,12 +11,7 @@ import Alamofire
 import OAuthSwift
 import SwiftyJSON
 
-enum StreamServiceError {
-    case wrongURL
-    case streamResponse(description: String)
-}
-
-class TwitterStreamService {
+class TwitterStreamService: StreamService {
     private let url: URL
     private let credentials: OAuthSwiftCredential
     private var streamRequest: Request?
@@ -26,7 +21,7 @@ class TwitterStreamService {
         self.credentials = credentials
     }
     
-    func startStream(stream: ((JSON?, StreamServiceError?) -> ())? = nil) {
+    func startStream(stream: ((JSON?, StreamServiceError?) -> ())?) {
         
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             stream?(nil, .wrongURL)
@@ -53,19 +48,21 @@ class TwitterStreamService {
             }
             .responseJSON { (response) in
                 print(response)
-                if response.response?.statusCode != 200 {
-                    switch response.result {
-                    case .failure(let error):
-                        stream?(nil, .streamResponse(description: error.localizedDescription))
-                    default: break
+                
+                if let error = response.result.error as? NSError {
+                    guard error.code != -999 else {
+                        // send finished
+                        stream?(nil, nil)
+                        return
                     }
                 }
-                else {
-                    // send finished
-                    stream?(nil, nil)
+                
+                switch response.result {
+                case .failure(let error):
+                    stream?(nil, .streamResponse(description: error.localizedDescription))
+                default: break
                 }
             }
-
     }
     
     func stopStream() {
