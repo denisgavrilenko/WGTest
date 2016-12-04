@@ -11,12 +11,7 @@ import Alamofire
 import OAuthSwift
 import SwiftyJSON
 
-enum StreamServiceError {
-    case wrongURL
-    case streamResponse(description: String)
-}
-
-class TwitterStreamService {
+class TwitterStreamService: StreamService {
     private let url: URL
     private let credentials: OAuthSwiftCredential
     private var streamRequest: Request?
@@ -26,7 +21,7 @@ class TwitterStreamService {
         self.credentials = credentials
     }
     
-    func startStream(stream: ((JSON?, StreamServiceError?) -> ())? = nil) {
+    func startStream(stream: ((JSON?, StreamServiceError?) -> ())?) {
         
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             stream?(nil, .wrongURL)

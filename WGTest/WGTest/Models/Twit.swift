@@ -20,4 +20,9 @@ struct Twit {
         }
         self.twit = twit
     }
+    
+    init(owner: String, twit: String) {
+        self.owner = owner
+        self.twit = twit
+    }
 }

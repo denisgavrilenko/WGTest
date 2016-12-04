@@ -10,21 +10,8 @@ import Foundation
 import ReactiveSwift
 import SwiftyJSON
 
-enum TwitsStreamError: Error {
-    case service(message: String)
-    
-    static func from(serviceError: StreamServiceError) -> TwitsStreamError {
-        switch serviceError {
-        case .wrongURL:
-            return .service(message: NSLocalizedString("Wrong URL", comment: "Can't connect to URL"))
-        case .streamResponse(description: let desc):
-            return .service(message: desc)
-        }
-    }
-}
-
-struct TwitsStreamer {
-    let streamService: TwitterStreamService
+struct TwitsStreamer: TwitsStreaming {
+    let streamService: StreamService
     
     func startStream() -> SignalProducer <Twit, TwitsStreamError> {
         return SignalProducer{ observer, disposable in

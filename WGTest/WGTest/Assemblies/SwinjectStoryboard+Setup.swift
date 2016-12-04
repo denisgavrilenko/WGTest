@@ -18,11 +18,11 @@ extension SwinjectStoryboard {
         credentials.oauthToken = "110512989-Cu2hWDBIVpZXlO5QKC2LMTxx22uFno1IG50VnS8X"
         credentials.oauthTokenSecret = "V8WqoMDopeVnXbvrNqZtJzUMYg1oVWIqybe7HyEpWN4ya"
         
-        defaultContainer.register(TwitterStreamService.self) { _ in TwitterStreamService(url: url, credentials: credentials) }
-        defaultContainer.register(TwitsStreamer.self) { r -> TwitsStreamer in TwitsStreamer(streamService: r.resolve(TwitterStreamService.self)!) }
-        defaultContainer.register(TwitsStreamerViewModel.self) { r -> TwitsStreamerViewModel in TwitsStreamerViewModel(twitsStreamer: r.resolve(TwitsStreamer.self)!) }
+        defaultContainer.register(StreamService.self) { _ in TwitterStreamService(url: url, credentials: credentials) }
+        defaultContainer.register(TwitsStreaming.self) { r -> TwitsStreaming in TwitsStreamer(streamService: r.resolve(StreamService.self)!) }
+        defaultContainer.register(TwitsStreamerViewModeling.self) { r -> TwitsStreamerViewModeling in TwitsStreamerViewModel(twitsStreamer: r.resolve(TwitsStreaming.self)!) }
         defaultContainer.registerForStoryboard(TwitsStreamerViewController.self) { (r, c) in
-            c.viewModel = r.resolve(TwitsStreamerViewModel.self)
+            c.viewModel = r.resolve(TwitsStreamerViewModeling.self)
         }
     }
 }
